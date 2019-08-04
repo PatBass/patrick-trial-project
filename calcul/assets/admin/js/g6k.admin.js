@@ -302,7 +302,8 @@ THE SOFTWARE.
 		table: Translator.trans('table'), 
 		department: Translator.trans('department'), 
 		region: Translator.trans('region'), 
-		country: Translator.trans('country')
+		country: Translator.trans('country'),
+		multitext: Translator.trans('multitext')
 	};
 
 	Admin.updated = false;

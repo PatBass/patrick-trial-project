@@ -58,6 +58,7 @@ use App\G6K\Manager\ExpressionParser\MoneyFunction;
  * - department: a departement code
  * - region: a region code
  * - country: a country code
+ * - multitext
  *
  * @author    Jacques Archimède
  *
@@ -86,10 +87,10 @@ class Data extends DatasetChild {
 	 * - country: a country code
 	 *
 	 */
-	const TYPES = ['date', 'boolean', 'number', 'integer', 'text', 'textarea', 'money', 'choice', 'multichoice', 'percent', 'table', 'department', 'region', 'country', 'year', 'month', 'day'];
+	const TYPES = ['date', 'boolean', 'number', 'integer', 'text', 'textarea', 'money', 'choice', 'multichoice', 'percent', 'table', 'department', 'region', 'country', 'year', 'month', 'day', 'multitext'];
 
 	/**
-	 * @var string     $type date, boolean, number, integer, text, textarea, money, choice, multichoice, percent, table, department region, country, ²
+	 * @var string     $type date, boolean, number, integer, text, textarea, money, choice, multichoice, percent, table, department region, country, multitext ²
 	 * array
 	 *
 	 * @access  private
