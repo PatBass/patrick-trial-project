@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Simulator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../doc/Simulator.xsd" name="simul2" label="simul2-label" category="" defaultView="Default" referer="" dynamic="0" memo="0" locale="fr-FR" timezone="Europe/Paris">
+	<Description edition="wysihtml"><![CDATA[
+
+	]]></Description>
+	<DataSet dateFormat="d/m/Y" decimalPoint="," groupingSeparator=" " groupingSize="3" moneySymbol="€" symbolPosition="after">
+		<Data id="1" name="simul2_data" label="simul2_data_label" type="choice">
+			<Choices>
+				<Choice id="1" value="simul2_data_choice1_value" label="simul2_data_choice1_value_label" />
+			</Choices>
+		</Data>
+	</DataSet>
+</Simulator>
