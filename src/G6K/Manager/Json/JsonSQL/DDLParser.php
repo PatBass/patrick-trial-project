@@ -75,6 +75,7 @@ class DDLParser extends Parser {
 		'money' => 'number',
 		'month' => 'integer',
 		'multichoice' => 'object',
+		'multitext' => 'object',
 		'number' =>'number',
 		'numeric' =>'number',
 		'percent' => 'number',

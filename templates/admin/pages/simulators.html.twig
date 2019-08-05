@@ -1363,7 +1363,7 @@ THE SOFTWARE.
 		<div class="attributes-container">
 			<div>
 				{{ page.showAttribute('profile-'~profileId~'-data-'~id, 'select', 'data', 'Data'|trans, data.id, data.id, true, 'Profile data'|trans, { (data.id): data.label }) }}
-				{% if data.type == 'choice' or data.type == 'multichoice' %}
+				{% if data.type == 'choice' or data.type == 'multichoice' or data.type == 'multitext' %}
 				{{ page.showAttribute('profile-'~profileId~'-data-'~id, 'select', 'default', 'Profile data value'|trans, deflt, deflt, true, 'Profile data value'|trans, { (deflt): data.choiceLabelByValue(deflt) }) }}
 				{% else %}
 				{{ page.showAttribute('profile-'~profileId~'-data-'~id, 'text', 'default', 'Profile data value'|trans, deflt, deflt, true, 'Profile data value'|trans) }}

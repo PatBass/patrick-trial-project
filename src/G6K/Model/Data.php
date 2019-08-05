@@ -295,6 +295,8 @@ class Data extends DatasetChild {
 		$this->type = $type;
 		if ($type == "multichoice" && ! is_array($this->value)) {
 			$this->value = array();
+		} elseif ($type == "multitext" && ! is_array($this->value)) {
+			$this->value = array();
 		}
 	}
 

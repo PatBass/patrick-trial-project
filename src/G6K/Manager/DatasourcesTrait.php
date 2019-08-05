@@ -65,6 +65,7 @@ trait DatasourcesTrait {
 			'money' => 'REAL',
 			'month' => 'INTEGER',
 			'multichoice' => 'TEXT',
+            'multitext' => 'TEXT',
 			'number' => 'REAL',
 			'percent' => 'REAL',
 			'region' => 'INTEGER',
@@ -84,6 +85,7 @@ trait DatasourcesTrait {
 			'money' => 'REAL',
 			'month' => 'SMALLINT',
 			'multichoice' => 'TEXT',
+            'multitext' => 'TEXT',
 			'number' => 'REAL',
 			'percent' => 'REAL',
 			'region' => 'SMALLINT',
@@ -103,6 +105,7 @@ trait DatasourcesTrait {
 			'money' => 'FLOAT',
 			'month' => 'INT',
 			'multichoice' => 'TEXT',
+            'multitext' => 'TEXT',
 			'number' => 'FLOAT',
 			'percent' => 'FLOAT',
 			'region' => 'INT',
@@ -122,6 +125,7 @@ trait DatasourcesTrait {
 			'money' => 'FLOAT',
 			'month' => 'INT',
 			'multichoice' => 'TEXT',
+            'multitext' => 'TEXT',
 			'number' => 'FLOAT',
 			'percent' => 'FLOAT',
 			'region' => 'INT',
@@ -141,6 +145,7 @@ trait DatasourcesTrait {
 			'money' => 'number',
 			'month' => 'integer',
 			'multichoice' => 'object',
+            'multitext' => 'object',
 			'number' => 'number',
 			'percent' => 'number',
 			'region' => 'integer',
@@ -602,6 +607,8 @@ trait DatasourcesTrait {
 					$insertValues[] = $database->quote($fromOtherTable ? $value : DateFunction::parseDate('d/m/Y', substr($value, 0, 10))->format('Y-m-d'));
 				} else if ($info['g6k_type'] == 'multichoice') {
 					$insertValues[] = $database->quote(json_encode($value));
+                } else if ($info['g6k_type'] == 'multitext') {
+                    $insertValues[] = $database->quote(json_encode($value));
 				} else if ( $info['g6k_type'] == 'text' || preg_match("/^(text|char|varchar)/i", $info['type'])) {
 					$insertValues[] = $database->quote($value);
 				} else  {

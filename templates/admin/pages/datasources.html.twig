@@ -226,7 +226,7 @@ THE SOFTWARE.
 									<tr>
 										{% for info in tableinfos %}
 										<th class="{{ info.g6k_type }}">
-											{% if info.g6k_type == 'choice' or info.g6k_type == 'multichoice' %}
+											{% if info.g6k_type == 'choice' or info.g6k_type == 'multichoice' or info.g6k_type == 'multitext' %}
 											<select name="{{ info.name }}-filter" class="form-control form-control-sm" style="width: 100%; font-weight: normal;">
 											<option value=""></option>
 											{% for choice, label in info.choices %}

@@ -10,4 +10,13 @@
 			</Choices>
 		</Data>
 	</DataSet>
+	<Steps>
+		<Step id="1" name="choice_simul2_step1" label="choice_simul2_step1_label" template="pages:article.html.twig" output="downloadablePDF" dynamic="1">
+			<Panels>
+			</Panels>
+			<ActionList>
+				<Action name="choice_simul2_step1_button_name" label="choice_simul2_step1_button_label" shape="button" what="submit" for="nextStep" location="bottom" />
+			</ActionList>
+		</Step>
+	</Steps>
 </Simulator>

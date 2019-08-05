@@ -1269,7 +1269,7 @@ class DataSourcesAdminController extends BaseAdminController {
 				$descr = $dom->createElement("Description");
 				$descr->appendChild($dom->createCDATASection(preg_replace("/(\<br\>)+$/", "", $form['description'][$i])));
 				$column->appendChild($descr);
-				if ($form['type'][$i] == 'choice' || $form['type'][$i] == 'multichoice') {
+				if ($form['type'][$i] == 'choice' || $form['type'][$i] == 'multichoice' || $form['type'][$i] == 'multitext') {
 					$choices = $dom->createElement("Choices");
 					if (isset($form['field-'.$i.'-choicesource-datasource'])) {
 						$source = $dom->createElement("Source");

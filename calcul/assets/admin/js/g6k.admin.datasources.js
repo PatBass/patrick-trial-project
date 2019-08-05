@@ -547,7 +547,7 @@ THE SOFTWARE.
 			minimumResultsForSearch: 100
 		});
 		$column.next().next().find("td.new-field-choices").hide();
-		if (field[5] === 'choice' || field[5] === 'multichoice') {
+		if (field[5] === 'choice' || field[5] === 'multichoice' || field[5] === 'multitext') {
 			var choicesPanel = Datasources.drawChoicesForInput(num);
 			choicesPanel.find('button.delete-choice-source').removeClass('update-button').hide();
 			choicesPanel.find('.edit-choice-source').removeClass('update-button').hide();

@@ -248,6 +248,9 @@ abstract class SimulatorCommandBase extends CommandBase
 						case 'multichoice':
 							$input = 'checkbox';
 							break;
+                        case 'multitext':
+                            $input = 'text';
+                            break;
 						case 'number':
 						case 'integer':
 							$input = 'number';

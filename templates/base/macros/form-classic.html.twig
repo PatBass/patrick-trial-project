@@ -54,7 +54,7 @@ THE SOFTWARE.
 		{%- if field.usage == 'input' -%}
 		{%- if label == '' -%}
 		<span class="label">{% if field.required or field.visibleRequired %} * {% endif %}</span>
-		{% elseif (type == 'choice' and field.expanded == 1) or type == 'multichoice' %}
+		{% elseif (type == 'choice' and field.expanded == 1) or type == 'multichoice' or type == 'multitext' %}
 		<label id="{{ name }}-label" class="{{ fieldLabelClass }}">{% if field.required or field.visibleRequired %}<span class="asterisk"> * </span>{% endif %}{{ label|fnref }}{% if field.required or field.visibleRequired %}<span class="asterisk"> * </span>{% endif %}{% if field.hasColon %} : {% endif %}</label>
 		{% else %}
 		<label id="{{ name }}-label" class="{{ fieldLabelClass }}" for="{{ name }}">{% if field.required or field.visibleRequired %}<span class="asterisk"> * </span>{% endif %}{{ label|fnref }}{% if field.required or field.visibleRequired %}<span class="asterisk"> * </span>{% endif %}{% if field.hasColon %} : {% endif %}</label>
@@ -110,6 +110,29 @@ THE SOFTWARE.
 			{% endif %}
 			{% endfor %}
 		</fieldset>
+
+
+
+
+
+	{% elseif type == 'multitext' %}
+		<fieldset id="{{ name }}">
+			<legend class="sr-only">{{ label|fnref }}</legend>
+			{%- for choice in data.choices -%}
+				{%- if choice.class == 'ChoiceGroup' -%}
+					{%- for gchoice in choice.choices -%}
+						{%- if gchoice.selected -%}
+							<label class="choice" for="{{ name }}_{{ gchoice.id }}_{{ loop.index }}"><input id="{{ name }}_{{ gchoice.id }}_{{ loop.index }}" type="checkbox" name="{{ name }}[]"{{ widget|jscode }} value="{{ gchoice.value }}"{%- if gchoice.value in value %} checked="checked"{% endif %} />{{ gchoice.label|fnref }}</label>
+						{% endif %}
+					{% endfor %}
+				{%- elseif choice.class == 'Choice' and choice.selected -%}
+					<label class="choice" for="{{ name }}_{{ choice.id }}_{{ loop.index }}"><input id="{{ name }}_{{ choice.id }}_{{ loop.index }}" type="checkbox" name="{{ name }}[]"{{ widget|jscode }} value="{{ choice.value }}"{%- if choice.value in value %} checked="checked"{% endif %} />{{ choice.label|fnref }}</label>
+				{% endif %}
+			{% endfor %}
+		</fieldset>
+
+
+
 	{% elseif type == 'array' %}
 		<div id="{{ name }}">
 		{{ plainValue }}
@@ -231,6 +254,21 @@ THE SOFTWARE.
 		<span>{{- choice.label|trim|nofnref -}}</span>
 		{%- endif -%}
 		{%- endfor -%}
+
+
+
+	{%- elseif type == 'multitext' -%}
+		{%- for choice in data.choices -%}
+			{%- if choice.class == 'ChoiceGroup' -%}
+				{%- for gchoice in choice.choices if gchoice.value in value -%}
+					<span>{{- gchoice.label|trim|nofnref -}}</span>
+				{%- endfor -%}
+		{%- elseif choice.class == 'Choice' and choice.value in value -%}
+				<span>{{- choice.label|trim|nofnref -}}</span>
+			{%- endif -%}
+		{%- endfor -%}
+
+
 	{%- elseif type == 'array' -%}
 		{{ plainValue }}
 	{%- elseif type == 'boolean' -%}

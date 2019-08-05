@@ -215,6 +215,12 @@ class SimulatorsAdminController extends BaseAdminController {
 		$updated = false;
 		$categories = [];
 		$notCategorized = $this->getTranslator()->trans("Not categorized");
+
+
+		//var_dump('yes, I will');die;
+
+
+
 		foreach($simus as $simu) {
 			$simupath = $this->simulatorsDir."/work/".$simu;
 			if (! file_exists($simupath)) {
@@ -2028,7 +2034,7 @@ class SimulatorsAdminController extends BaseAdminController {
 						'label' => $gdata->getLabel(),
 						'type' => $gdata->getType()
 					);
-					if ($gdata->getType() == 'choice' || $gdata->getType() == 'multichoice') {
+					if ($gdata->getType() == 'choice' || $gdata->getType() == 'multichoice' || $gdata->getType() == 'multitext') {
 						$this->populateChoiceWithSource($gdata);
 						$options = array();
 						foreach ($gdata->getChoices() as $choice) {
@@ -2092,7 +2098,7 @@ class SimulatorsAdminController extends BaseAdminController {
 					'label' => $data->getLabel(),
 					'type' => $data->getType()
 				);
-				if ($data->getType() == 'choice' || $data->getType() == 'multichoice') {
+				if ($data->getType() == 'choice' || $data->getType() == 'multichoice' || $gdata->getType() == 'multitext') {
 					$this->populateChoiceWithSource($data);
 					$options = array();
 					foreach ($data->getChoices() as $choice) {

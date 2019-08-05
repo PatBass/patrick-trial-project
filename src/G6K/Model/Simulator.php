@@ -3190,6 +3190,63 @@ class Simulator {
 						$xml[] = '			</Choices>';
 					}
 					$xml[] = '		</Data>';
+
+
+
+
+
+
+					//var_dump($data->getType());die;
+
+
+					if ($data->getType() == 'multitext') {
+						$xml[] = '			<Choices>';
+						foreach ($data->getChoices() as $choice) {
+							if ($choice instanceof Choice) {
+								$xml[] = '				<Choice id="' . $choice->getId() . '" value="' . $choice->getValue() . '" label="' . str_replace(array('<', '"'), array("&lt;", "&quot;"), $choice->getLabel()) . '" />';
+							} elseif ($choice instanceof ChoiceGroup) {
+								$xml[] = '				<ChoiceGroup label="' . str_replace(array('<', '"'), array("&lt;", "&quot;"), $choice->getLabel()) . '">';
+								foreach ($choice->getChoices() as $gchoice) {
+									$xml[] = '					<Choice id="' . $gchoice->getId() . '" value="' . $gchoice->getValue() . '" label="' . str_replace(array('<', '"'), array("&lt;", "&quot;"), $gchoice->getLabel()) . '" />';
+								}
+								if ($choice->getChoiceSource() !== null) {
+									$source = $choice->getChoiceSource();
+									$source->setCaseInsensitive(false);
+									$attrs = 'id="' . $source->getId() . '"';
+									if ($source->getIdColumn() != '') {
+										$attrs .= ' idColumn="' . $source->getIdColumn() . '"';
+									}
+									$attrs .= ' valueColumn="' . $source->getValueColumn() . '" labelColumn="' . $source->getLabelColumn() . '"';
+									$xml[] = '					<Source ' . $attrs . ' />';
+								}
+								$xml[] = '				</ChoiceGroup>';
+							}
+						}
+						if ($data->getChoiceSource() !== null) {
+							$source = $data->getChoiceSource();
+							$source->setCaseInsensitive(false);
+							$attrs = 'id="' . $source->getId() . '"';
+							if ($source->getIdColumn() != '') {
+								$attrs .= ' idColumn="' . $source->getIdColumn() . '"';
+							}
+							$attrs .= ' valueColumn="' . $source->getValueColumn() . '" labelColumn="' . $source->getLabelColumn() . '"';
+							$xml[] = '				<Source ' . $attrs . ' />';
+						}
+						$xml[] = '			</Choices>';
+					}
+					$xml[] = '		</Data>';
+
+
+
+
+
+
+
+
+
+
+
+
 				} else {
 					$xml[] = '		<Data ' . $attrs . ' />';
 				}
